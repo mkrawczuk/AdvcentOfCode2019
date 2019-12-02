@@ -6,12 +6,9 @@ import sys
 from bs4 import BeautifulSoup
 from getpass import getpass
 
-CACHEDIR = os.path.join(sys.path[0] ,"cache")
+from parsers import *
 
-class Parser:
-    """ A simple parser for a newline-separated list of numbers. """
-    def parse(self, inputdata: str):
-        return list(map(int, inputdata.split()))
+CACHEDIR = os.path.join(sys.path[0] ,"cache")
 
 class Downloader:
     """ Download input with GitHub authentication. """
@@ -50,10 +47,9 @@ class InputForDay:
     """Input handler for the given day's task."""
 
     def __init__(self, day: int,
-            parser: Parser = Parser(),
             downloader: Downloader = Downloader()):
         self._day = day
-        self._parser = parser
+        self._parser = ParserForDay(day)
         self._downloader = downloader
 
     """Downloads the input from the AoC web API, parses it with the provided
