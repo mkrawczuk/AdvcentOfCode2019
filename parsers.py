@@ -13,9 +13,15 @@ class CommaParser(Parser):
     def parse(self, inputdata: str):
         return list(map(int, inputdata.split(',')))
 
+class Day3Parser(Parser):
+    """ For Day 3's special kind of input. """
+    def parse(self, inputdata: str):
+        return list(map(lambda x: x.split(','), inputdata.split()))
+
 _parser_for_day = {
         1: NewlineParser,
-        2: CommaParser
+        2: CommaParser,
+        3: Day3Parser
         }
 
 def ParserForDay(day: int):
