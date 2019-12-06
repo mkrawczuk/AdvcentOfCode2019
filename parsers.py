@@ -21,7 +21,9 @@ class Day3Parser(Parser):
 _parser_for_day = {
         1: NewlineParser,
         2: CommaParser,
-        3: Day3Parser
+        3: Day3Parser,
+      # 4: Input was provided in task description.
+        5: CommaParser,
         }
 
 def ParserForDay(day: int):
